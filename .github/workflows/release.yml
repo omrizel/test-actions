@@ -30,17 +30,14 @@ jobs:
         run: |
           echo calc version!
 
-  build:
+  trigger_build:
     needs: versioning
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, build!
+      - uses: peter-evans/workflow-dispatch@v2
+        with:
+          workflow: 'build.yml'
 
