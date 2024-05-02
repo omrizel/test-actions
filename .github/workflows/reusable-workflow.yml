@@ -6,8 +6,7 @@ on:
 jobs:
   conditional-job:
     runs-on: ubuntu-latest
-    if: |
-          contains(toJson(inputs.names), John)
+
     steps:
       - name: Conditional Step A
         run: echo "Step A executed because 'John' is in the names list"
