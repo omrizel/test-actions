@@ -1,18 +1,20 @@
-name: My Reusable Workflow
+name: Reusable workflow example
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
-  conditional-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Conditional Step A
-        run: echo "Step A executed because 'John' is in the names list"
-
-  always-run-job:
+  triage:
     runs-on: ubuntu-latest
     steps:
-      - name: Step B
-        run: echo "Step B always runs"
+    - uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.token }}
+        configuration-path: ${{ inputs.config-path }}
