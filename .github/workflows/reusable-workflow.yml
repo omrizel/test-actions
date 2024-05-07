@@ -2,10 +2,10 @@ name: Reusable workflow example
 
 on:
   workflow_call:
-      inputs:
-        testvar:
-        required: true
-        type: string  
+    inputs:
+      testvar:
+      required: true
+      type: string  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
