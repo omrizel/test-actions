@@ -2,6 +2,10 @@ name: Reusable workflow example
 
 on:
   workflow_call:
+      inputs:
+        testvar:
+        required: true
+        type: string  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -13,14 +17,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - uses: jfrog/setup-jfrog-cli@v4
-        env:
-          JF_URL: ${{ secrets.PLATFORM_URL }}
-          JF_ACCESS_TOKEN:  ${{ secrets.PLATFORM_ADMIN_TOKEN }}
+    # - uses: actions/checkout@v3
+    #  - uses: jfrog/setup-jfrog-cli@v4
+    #    env:
+    #      JF_URL: ${{ secrets.PLATFORM_URL }}
+    #      JF_ACCESS_TOKEN:  ${{ secrets.PLATFORM_ADMIN_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo hello build!
+          echo ${{ inputs.testvar }}
       
