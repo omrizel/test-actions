@@ -33,6 +33,6 @@ jobs:
     steps:
       - name: Run test
         run: |
-          echo "should run only when param 'testvar' is passed
+          echo "should run only when param 'testvar' is passed"
   
       
