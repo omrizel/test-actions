@@ -4,3 +4,6 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      testvar: byeeee
+
