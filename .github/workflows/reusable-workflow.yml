@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       testvar:
-        required: true
+        required: false
         type: string  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -26,5 +26,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo ${{ inputs.testvar }}
+          echo "build - should always run"
+  test:
+    if: ${{ inputs.testvar }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: |
+          echo "should run only when param 'testvar' is passed
+  
       
