@@ -4,5 +4,3 @@ on:
   jobs:
     build:
       uses: ./.github/workflows/reusable-workflow.yml
-      with:
-        names: '["John", "Jean"]'  # Or omit this line to print "bla"
