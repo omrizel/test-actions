@@ -18,13 +18,11 @@ jobs:
   create-release-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Release Branch
-        uses: actions/checkout@v4
-      - name: checkout and push
-        run: |
-          git checkout -b release
-          sudo apt update
-          sudo apt install gh
+      -  uses: actions/checkout@v4
+      -  uses: actions4gh/setup-gh@v1
+         env:
+           GH_REPO: ${{ github.repository }}
+      -  run: |
           gh auth
+          git checkout -b release
           git push origin release
-
