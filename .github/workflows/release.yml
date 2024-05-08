@@ -20,6 +20,7 @@ jobs:
     steps:
       -  uses: actions/checkout@v4
       -  run: |
-          gh auth login
+          git config --global user.email "omri.zelinko@gmail.com"
+          git config --global user.name "omrizel"
           git checkout -b release
           git push origin release
