@@ -23,5 +23,7 @@ jobs:
       - name: checkout and push
         run: |
           git checkout -b release
+          brew install gh
+          gh auth
           git push origin release
 
