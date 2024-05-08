@@ -19,9 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -  uses: actions/checkout@v4
-      -  uses: actions4gh/setup-gh@v1
-         env:
-           GH_REPO: ${{ github.repository }}
       -  run: |
           gh auth
           git checkout -b release
