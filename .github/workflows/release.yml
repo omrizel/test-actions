@@ -18,9 +18,7 @@ jobs:
   create-release-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Release Branch
-        uses: actions/checkout@v4
-      - name: Create Branch
+      - name: checkout and push
         run: |
           git checkout -b release
           git push origin release
