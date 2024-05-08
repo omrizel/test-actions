@@ -20,6 +20,6 @@ jobs:
     steps:
       -  uses: actions/checkout@v4
       -  run: |
-          gh auth
+          gh auth logic
           git checkout -b release
           git push origin release
