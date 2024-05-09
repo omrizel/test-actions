@@ -20,6 +20,7 @@ jobs:
           git checkout -b milestone/${timestamp}-master
           echo "jfdev_ci_commons=${{ inputs.version }}" >> ${{ github.workspace }}/release.version
           git add ${{ github.workspace }}/release.version
+          git commit -m "DEVF-502 - Update release versions"
           git push origin milestone/${timestamp}-master
   build:
     runs-on: ubuntu-latest
