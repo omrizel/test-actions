@@ -1,0 +1,19 @@
+name: Jfdev Ci Commons Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -  run: |
+          echo "build"
+  test:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    steps:
+      - run: |
+          echo "test"
+
+      
