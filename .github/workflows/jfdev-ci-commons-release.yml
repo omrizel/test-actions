@@ -19,7 +19,7 @@ jobs:
           timestamp=$(date +"%Y%m%d%H%M%S")
           git checkout -b milestone/${timestamp}-master
           echo "jfdev_ci_commons=${{ inputs.version }}" >> ${{ github.workspace }}/release.version
-          git add ${{ github.workspace }}/release.version
+          git add $GITHUB_WORKSPACE/release.version
           git push origin milestone/${timestamp}-master
   build:
     runs-on: ubuntu-latest
