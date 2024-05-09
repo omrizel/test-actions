@@ -1,0 +1,37 @@
+name: Jfdev Ci Commons Release
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    steps:
+      -  uses: actions/checkout@v4
+      -  run: |
+          git config --global user.email "omri.zelinko@gmail.com"
+          git config --global user.name "omrizel"
+          timestamp=$(date +"%Y%m%d%H%M%S")
+          git checkout -b milestone/${timestamp}-master
+          echo "jfdev_ci_commons=${{ inputs.version }}" >> ${{ github.workspace }}/release.version
+          git add ${{ github.workspace }}/release.version
+          git push origin release
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    # - uses: actions/checkout@v3
+    #  - uses: jfrog/setup-jfrog-cli@v4
+    #    env:
+    #      JF_URL: ${{ secrets.PLATFORM_URL }}
+    #      JF_ACCESS_TOKEN:  ${{ secrets.PLATFORM_ADMIN_TOKEN }}
+      - name: Run a one-line script
+        run: |
+          echo "build - should always run"
+
+      
