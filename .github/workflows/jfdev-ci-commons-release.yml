@@ -24,15 +24,24 @@ jobs:
           git push origin milestone/${timestamp}-master
   build:
     runs-on: ubuntu-latest
+    needs: prepare-release
     steps:
+      - name: Trigger Build
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: omrizel
+          repo: omrizel/test-actions
+          github_token: ${{ secrets.REPO_TOKEN }}
+          workflow_file_name: jfdev-ci-commons-build.yml
+          wait_workflow: true
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     # - uses: actions/checkout@v3
     #  - uses: jfrog/setup-jfrog-cli@v4
     #    env:
     #      JF_URL: ${{ secrets.PLATFORM_URL }}
     #      JF_ACCESS_TOKEN:  ${{ secrets.PLATFORM_ADMIN_TOKEN }}
-      - name: Run a one-line script
-        run: |
-          echo "build - should always run"
+    #  - name: Run a one-line script
+    #    run: |
+    #      echo "build - should always run"
 
       
