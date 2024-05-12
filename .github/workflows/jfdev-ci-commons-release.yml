@@ -30,7 +30,7 @@ jobs:
         uses: convictional/trigger-workflow-and-wait@v1.6.5
         with:
           owner: omrizel
-          repo: omrizel/test-actions
+          repo: test-actions
           github_token: ${{ secrets.REPO_TOKEN }}
           workflow_file_name: jfdev-ci-commons-build.yml
           wait_workflow: true
